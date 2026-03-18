@@ -14,9 +14,12 @@
 
     <link rel="stylesheet" href="/bundle.css" />
   </head>
-  <body>
+  <body class="ids">
     {% block content %}{% endblock %}
 
+    <script src="/ids/js/lib/photoswipe.umd.min.js"></script>
+    <script src="/ids/js/lib/photoswipe-lightbox.umd.min.js"></script>
+    <script src="/ids/js/gallery.js"></script>
     <script src="/assets/script.js" defer></script>
     <script src="/index.js" type="module"></script>
   </body>
