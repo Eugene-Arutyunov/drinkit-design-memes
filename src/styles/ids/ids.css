@@ -63,7 +63,7 @@
     margin-bottom: calc(var(--ids__density) * 0.4em);
 
     &.loud {
-      font-size: 2em;
+      font-size: 1.2em;
       line-height: 1.2;
     }
 
