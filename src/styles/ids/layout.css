@@ -18,35 +18,12 @@
 .ids__wrapper {
   position: relative;
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 0 10%;
 
   @media (width < 768px) {
     width: 100%;
     padding: 0 calc(var(--ids__density) * 0.6em);
-  }
-
-  &.L {
-    width: 85%;
-
-    @media (width < 768px) {
-      width: 100%;
-      padding: 0 calc(var(--ids__density) * 0.6em);
-    }
-  }
-  &.XL {
-    width: 100%;
-    padding: 0 calc(var(--ids__density) * 0.75em);
-
-    @media (width < 768px) {
-      padding: 0 calc(var(--ids__density) * 0.6em);
-    }
-  }
-  &.XXL {
-    width: 100%;
-
-    @media (width < 768px) {
-      padding: 0;
-    }
+    margin: 0 auto;
   }
 
   & .ids__text-width {

@@ -1,13 +1,12 @@
-
 :root {
-  --ids__text-RGB:        5, 5, 5;
-  --ids__link-RGB:        0, 100, 240;
-  --ids__hover-RGB:       0, 200, 0;
-  --ids__accent-RGB:      253, 47, 75;
-  --ids__code-RGB:        115, 120, 125;
-  --ids__mark-RGB:        255, 225, 0;
-  --ids__surface-RGB:     238, 240, 242;
-  --ids__background-RGB:  255, 255, 255;
+  --ids__text-RGB: 0, 35, 70;
+  --ids__link-RGB: 51, 76, 219;
+  --ids__hover-RGB: 0, 200, 0;
+  --ids__accent-RGB: 51, 76, 219; /* #334cdb */
+  --ids__code-RGB: 115, 120, 125;
+  --ids__mark-RGB: 255, 225, 0;
+  --ids__surface-RGB: 238, 240, 242;
+  --ids__background-RGB: 255, 255, 255;
 }
 
 body {

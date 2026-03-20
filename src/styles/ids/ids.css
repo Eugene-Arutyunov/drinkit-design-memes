@@ -3,17 +3,17 @@
     color: rgb(var(--ids__link-RGB));
     text-decoration: underline;
     will-change: color;
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 2px;
     text-underline-offset: 0.2em;
     text-decoration-skip-ink: none;
-    text-decoration-color: rgba(var(--ids__link-RGB), 0.2);
+    text-decoration-color: rgba(var(--ids__link-RGB), 1);
     transition:
       color 0.5s ease,
       text-decoration 0.5s ease;
 
     &:hover {
       color: rgb(var(--ids__hover-RGB));
-      text-decoration-color: rgba(var(--ids__hover-RGB), 0.2);
+      text-decoration-color: rgba(var(--ids__hover-RGB), 1);
       transition:
         color 0s ease,
         text-decoration 0s ease;
@@ -119,8 +119,8 @@
   & h2 {
     font-size: 2.4em;
     font-weight: 650;
-    line-height: calc(var(--ids__density) / 1.2);
-    margin-bottom: 0.5em;
+    line-height: 1;
+    margin-bottom: 0.3em;
 
     @media (width < 768px) {
       font-size: 2em;
