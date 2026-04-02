@@ -2,20 +2,15 @@
 
 ids-gallery,
 .ids__gallery {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.4em;
   background-color: rgba(var(--ids__text-RGB), 0.03);
   padding-bottom: 1em;
   margin-bottom: 1em;
 
   figure {
-    flex: 0 0 12.5em;
-
-    @media (width < 768px) {
-      flex: 0 0 calc(50% - 0.2em);
-    }
+    min-width: 0;
 
     &:focus-within:has(a:focus-visible) {
       outline: 2px solid rgb(var(--ids__link-RGB));
