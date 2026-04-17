@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "images:compress": "node scripts/compress-rasters.mjs",
     "prebuild": "rm -rf _site",
     "build": "eleventy",
     "build:clean": "eleventy",
@@ -8,5 +9,8 @@
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
     "vidstack": "^1.12.13"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
