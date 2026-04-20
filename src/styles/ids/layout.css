@@ -123,3 +123,8 @@ header,
 footer {
   padding: calc(var(--ids__density) * 1em);
 }
+
+/* фрагмент без переноса (топонимы и т.п.) */
+.ids__nobr {
+  white-space: nowrap;
+}
