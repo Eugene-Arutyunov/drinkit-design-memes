@@ -46,5 +46,41 @@
   & .post-meta__tags {
     display: inline;
     margin: 0;
+    color: rgb(var(--ids__link-RGB));
+    text-decoration: none;
+  }
+}
+
+/* Анонс перед кнопкой подписки — цвет как у тегов, без подчёркивания */
+.post-coming-soon {
+  color: rgb(var(--ids__link-RGB));
+  text-decoration: none;
+}
+
+/* Промо после последней публикации: блок на всю ширину колонки */
+/* Специфичность выше `.ids a`, чтобы не тянуть подчёркивание и перебить цвет */
+.ids a.post-subscribe-promo {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: calc(var(--ids__density, 1.3) * 0.5em);
+  padding: 1em 1.25em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05em;
+  line-height: 1.25;
+  color: rgb(var(--ids__background-RGB));
+  background-color: rgb(var(--ids__link-RGB));
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease;
+
+  &:hover {
+    color: rgb(var(--ids__background-RGB));
+    background-color: rgba(var(--ids__link-RGB), 0.85);
+    transition:
+      color 0s ease,
+      background-color 0s ease;
   }
 }
