@@ -12,7 +12,14 @@
 }
 
 body {
-  font-family: "Inter";
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Helvetica,
+    Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
 }
