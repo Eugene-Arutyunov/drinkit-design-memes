@@ -12,6 +12,8 @@ const PNG_TO_JPEG_DIRS = [
   "table-process-2",
   "table-mechanical",
   "table-start",
+  "moscow",
+  "rorshah",
 ];
 
 const JPEG_QUALITY_FROM_PNG = 95;
@@ -73,20 +75,35 @@ async function main() {
     await convertPngDir(d);
   }
 
-  const jpegDirs = ["graffity", "table-reality", "1", "2", "3", "4", "5"];
+  const jpegDirs = [
+    "graffity",
+    "table-reality",
+    "moscow",
+    "rorshah",
+    "library",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ];
   for (const d of jpegDirs) {
     for (const abs of walkJpegs(d)) {
       await recompressJpegIfSmaller(abs);
     }
   }
 
-  const indexPath = path.join(root, "src/index.html");
-  let html = fs.readFileSync(indexPath, "utf8");
-  const re =
-    /(\/assets\/(?:table-process-1|table-process-2|table-mechanical|table-start)\/[^"'>\s]+)\.png/g;
-  html = html.replace(re, "$1.jpg");
-  fs.writeFileSync(indexPath, html);
-  console.log("Updated src/index.html (.png → .jpg for table-* paths)");
+  const pngPathRe =
+    /(\/assets\/(?:table-process-1|table-process-2|table-mechanical|table-start|moscow|rorshah)\/[^"'>\s]+)\.png/g;
+
+  for (const name of ["index.html", "index-test.html"]) {
+    const indexPath = path.join(root, "src", name);
+    if (!fs.existsSync(indexPath)) continue;
+    let html = fs.readFileSync(indexPath, "utf8");
+    html = html.replace(pngPathRe, "$1.jpg");
+    fs.writeFileSync(indexPath, html);
+    console.log(`Updated src/${name} (.png → .jpg)`);
+  }
 }
 
 main().catch((e) => {
