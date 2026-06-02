@@ -18,6 +18,8 @@ const PNG_TO_JPEG_DIRS = [
 
 const JPEG_QUALITY_FROM_PNG = 95;
 const JPEG_RECOMPRESS_QUALITY = 92;
+/** Как у library/graffity: не больше 1920 по длинной стороне */
+const MAX_JPEG_EDGE = 1920;
 
 const jpegFromPng = {
   quality: JPEG_QUALITY_FROM_PNG,
@@ -49,12 +51,28 @@ async function convertPngDir(relDir) {
 async function recompressJpegIfSmaller(absPath) {
   const before = fs.statSync(absPath).size;
   const tmp = `${absPath}.opt.tmp`;
-  await sharp(absPath).jpeg(jpegRecompress).toFile(tmp);
+  const meta = await sharp(absPath).metadata();
+  const w = meta.width ?? 0;
+  const h = meta.height ?? 0;
+  const needsResize = w > MAX_JPEG_EDGE || h > MAX_JPEG_EDGE;
+
+  let pipeline = sharp(absPath);
+  if (needsResize) {
+    pipeline = pipeline.resize({
+      width: w >= h ? MAX_JPEG_EDGE : undefined,
+      height: h > w ? MAX_JPEG_EDGE : undefined,
+      fit: "inside",
+      withoutEnlargement: true,
+    });
+  }
+
+  await pipeline.jpeg(jpegRecompress).toFile(tmp);
   const after = fs.statSync(tmp).size;
-  if (after < before) {
+  if (needsResize || after < before) {
     fs.renameSync(tmp, absPath);
+    const note = needsResize ? `, ${w}×${h} → ≤${MAX_JPEG_EDGE}` : "";
     console.log(
-      `JPEG− ${path.relative(srcAssets, absPath)} ${before} → ${after} (${Math.round((100 * after) / before)}%)`,
+      `JPEG− ${path.relative(srcAssets, absPath)} ${before} → ${after} (${Math.round((100 * after) / before)}%)${note}`,
     );
   } else {
     fs.unlinkSync(tmp);
