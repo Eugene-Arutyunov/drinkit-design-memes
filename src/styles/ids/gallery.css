@@ -27,6 +27,15 @@ ids-gallery,
       max-height: 100%;
       max-width: 100%;
     }
+
+  }
+}
+
+/* Перебивает .ids figure figcaption (0.8em) только в сетке галереи */
+.ids ids-gallery figure figcaption,
+.ids .ids__gallery figure figcaption {
+  @media (width < 768px) {
+    font-size: 0.6em;
   }
 }
 
