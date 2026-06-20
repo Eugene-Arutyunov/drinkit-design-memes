@@ -2,7 +2,6 @@
  * @param {HTMLDivElement} node
  */
 const photoSwipeSize = (node) => {
-  // get image tag inside of node
   if (node.hasAttribute("data-pswp-width") && node.hasAttribute("data-pswp-height")) {
     return;
   }
@@ -11,12 +10,18 @@ const photoSwipeSize = (node) => {
   if (!img) {
     return;
   }
-  let i = new Image();
-  i.onload = () => {
-    node.setAttribute("data-pswp-width", i.width.toString());
-    node.setAttribute("data-pswp-height", i.height.toString());
+  const setSize = () => {
+    if (!img.naturalWidth || !img.naturalHeight) {
+      return;
+    }
+    node.setAttribute("data-pswp-width", img.naturalWidth.toString());
+    node.setAttribute("data-pswp-height", img.naturalHeight.toString());
   };
-  i.src = img.src;
+  if (img.complete) {
+    setSize();
+  } else {
+    img.addEventListener("load", setSize, { once: true });
+  }
 };
 
 class IdsGallery extends HTMLElement {
