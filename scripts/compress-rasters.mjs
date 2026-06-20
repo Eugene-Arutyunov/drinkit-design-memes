@@ -99,6 +99,7 @@ async function main() {
     "moscow",
     "rorshah",
     "library",
+    "interview-1",
     "1",
     "2",
     "3",

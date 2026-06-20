@@ -58,7 +58,7 @@ const part1 = `  <div class="ids__text-width">
         <span class="post-meta__prefix">на вопросы отвечал</span>
         <img
           class="post-meta__avatar"
-          src="/assets/author.png"
+          src="/assets/author.jpg"
           alt=""
           width="20"
           height="20" />
@@ -104,7 +104,7 @@ const part1 = `  <div class="ids__text-width">
     <div class="interview-turn">
       <div class="interview-turn__speaker"><img
           class="interview-turn__avatar"
-          src="/assets/author.png"
+          src="/assets/author.jpg"
           alt=""
           width="48"
           height="48" /><span class="interview-turn__name">никита</span></div>
@@ -131,7 +131,7 @@ const part1 = `  <div class="ids__text-width">
     <div class="interview-turn">
       <div class="interview-turn__speaker"><img
           class="interview-turn__avatar"
-          src="/assets/author.png"
+          src="/assets/author.jpg"
           alt=""
           width="48"
           height="48" /><span class="interview-turn__name">никита</span></div>
@@ -155,7 +155,7 @@ const part1 = `  <div class="ids__text-width">
     <div class="interview-turn">
       <div class="interview-turn__speaker"><img
           class="interview-turn__avatar"
-          src="/assets/author.png"
+          src="/assets/author.jpg"
           alt=""
           width="48"
           height="48" /><span class="interview-turn__name">никита</span></div>
@@ -213,7 +213,7 @@ const part2 = `  <div class="ids__text-width">
         <span class="post-meta__prefix">на вопросы отвечал</span>
         <img
           class="post-meta__avatar"
-          src="/assets/author.png"
+          src="/assets/author.jpg"
           alt=""
           width="20"
           height="20" />

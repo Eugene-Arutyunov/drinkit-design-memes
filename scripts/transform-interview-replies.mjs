@@ -6,7 +6,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const indexPath = join(root, "src/index.html");
 
 const DILYARA_IMG = "/assets/dilyara-kalinina-telyasheva.jpg";
-const NIKITA_IMG = "/assets/author.png";
+const NIKITA_IMG = "/assets/author.jpg";
 
 function stripLeadingDash(text) {
   const trimmed = text.trim();
