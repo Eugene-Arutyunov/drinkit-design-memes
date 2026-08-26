@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main # или ваша рабочая ветка
+  workflow_dispatch:
 
 permissions:
   contents: read
