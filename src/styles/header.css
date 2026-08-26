@@ -37,6 +37,17 @@
     }
   }
 
+  & a.site-header__logo {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+      filter: brightness(1.08);
+    }
+  }
+
   & .site-header__tagline {
     margin: 0;
     font-size: 0.8rem;

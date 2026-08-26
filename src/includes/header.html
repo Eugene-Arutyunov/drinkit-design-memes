@@ -1,6 +1,46 @@
 <header class="site-header">
   <div class="site-header__row">
     {% set mark_class = "site-header__logo" %} {% include "logo-mark.html" %}
+    {% if htmlLang == 'en' %}
+    <p class="site-header__tagline">
+      <span class="site-header__project">drinkit design memes</span> · a small
+      blog about noteworthy things in the architecture and design of our digital
+      coffee shops · fragments of process
+      <img
+        class="site-header__eyes"
+        src="/assets/logo-vector.png"
+        alt=""
+        width="223"
+        height="234"
+        decoding="async" />
+      and result, bright thoughts ·
+      <a
+        href="https://t.me/nikitatugarin"
+        target="_blank"
+        rel="noopener noreferrer"
+        >nikita tugarin</a
+      >,
+      <a
+        href="https://t.me/arutyunov2025"
+        target="_blank"
+        rel="noopener noreferrer"
+        >zhenya arutyunov</a
+      >,
+      <a
+        href="https://dariacoch.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >dasha kochenova</a
+      >
+      · you? ·
+      <a
+        href="https://t.me/nikitatugarin"
+        target="_blank"
+        rel="noopener noreferrer"
+        >subscribe</a
+      >
+    </p>
+    {% else %}
     <p class="site-header__tagline">
       <span class="site-header__project">drinkit design memes</span> · небольшой
       блог о том, что интересного можно заметить в архитектуре и дизайне наших
@@ -18,7 +58,20 @@
         target="_blank"
         rel="noopener noreferrer"
         >никита тугарин</a
-      >, женя арутюнов, даша коченова · ты? ·
+      >,
+      <a
+        href="https://t.me/arutyunov2025"
+        target="_blank"
+        rel="noopener noreferrer"
+        >женя арутюнов</a
+      >,
+      <a
+        href="https://dariacoch.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >даша коченова</a
+      >
+      · ты? ·
       <a
         href="https://t.me/nikitatugarin"
         target="_blank"
@@ -26,5 +79,6 @@
         >подписаться</a
       >
     </p>
+    {% endif %}
   </div>
 </header>

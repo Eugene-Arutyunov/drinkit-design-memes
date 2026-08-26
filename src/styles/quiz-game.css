@@ -1,0 +1,322 @@
+.game {
+  --blue-drinkit-RGB: 24, 45, 168;
+  --ids__error-RGB: 240, 84, 95;
+  position: relative;
+  width: 100%;
+
+  & .quiz {
+    position: relative;
+    display: grid;
+    width: 100%;
+    margin: 0 0 calc(var(--ids__density, 1.3) * 0.5em);
+
+    & > img,
+    & > .dropzones {
+      grid-area: 1 / 1;
+    }
+  }
+
+  & img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  & .dropzones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .dropzone {
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #fff;
+    min-height: 80px;
+  }
+
+  & .dropzone.dimmed {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  & .dropzone.filled {
+    background-color: transparent;
+  }
+
+  & .dropzone.filled.dimmed {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  & .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -22%;
+    width: 20%;
+    z-index: 2;
+  }
+
+  & button {
+    --tx: 0px;
+    --ty: 0px;
+    --base-angle: 0deg;
+    transform-origin: center center;
+    animation: quiz-game-shake ease-in-out alternate infinite;
+    transform: translate3d(var(--tx), var(--ty), 0)
+      rotate(calc(var(--base-angle)));
+  }
+
+  & button.draggable.dragging {
+    animation-play-state: paused;
+  }
+
+  & .buttons button:nth-child(1) {
+    --base-angle: 2deg;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+  }
+
+  & .buttons button:nth-child(2) {
+    --base-angle: -2deg;
+    animation-duration: 0.3s;
+    animation-delay: 1.2s;
+  }
+
+  & .buttons button:nth-child(3) {
+    --base-angle: -1.5deg;
+    animation-duration: 0.9s;
+    animation-delay: 0.7s;
+  }
+
+  & .buttons button:nth-child(4) {
+    --base-angle: 1deg;
+    animation-duration: 0.6s;
+    animation-delay: 2.4s;
+  }
+
+  & button:hover {
+    filter: brightness(1.2);
+    transition: color 0s ease;
+  }
+
+  & .mixin--no-yes--arrow---curve-R {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    color: rgb(var(--blue-drinkit-RGB));
+    position: relative;
+    right: auto;
+    top: auto;
+    left: auto;
+    width: 100%;
+    align-self: stretch;
+    margin-top: 0.5em;
+    margin-left: 0;
+    transform: rotate(-8deg);
+    transform-origin: top center;
+    z-index: 0;
+    font-size: 0.75em;
+    font-weight: 570;
+    letter-spacing: 0.13em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  & .mixin--no-yes--arrow---curve-R.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  & .mixin--no-yes--arrow---curve-R::after {
+    content: "";
+    background-image: url("/assets/quiz/arrow-curve.svg");
+    width: 100%;
+    max-width: 7.2em;
+    aspect-ratio: 200 / 100;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 0;
+    top: 0.2em;
+    filter: hue-rotate(200deg) brightness(0.5) contrast(1.4);
+  }
+
+  & button.draggable {
+    padding: 0.4em 0.6em;
+    border-radius: 100em;
+    background: rgb(var(--blue-drinkit-RGB));
+    color: white;
+    cursor: grab;
+    font-weight: 600;
+    user-select: none;
+    touch-action: none;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  & .dragging {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    margin: 0;
+    z-index: 9999;
+    will-change: transform;
+    cursor: grabbing;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  & .dropzone .hint {
+    margin-left: 0.2em;
+    font-size: 1em;
+    color: white;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  & .dropzone .draggable s {
+    opacity: 0.6;
+  }
+
+  & .dropzone .draggable {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  &.answered .dropzone.correct {
+    background: rgba(31, 163, 56, 0.2);
+  }
+
+  &.answered .dropzone.wrong {
+    background: rgba(var(--ids__error-RGB), 0.2);
+  }
+
+  &.answered .dropzone.correct button.draggable {
+    background: rgba(31, 163, 56, 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  &.answered .dropzone.wrong button.draggable {
+    background: rgba(var(--ids__error-RGB), 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  &.answered .buttons button,
+  &.answered .dropzone .draggable {
+    animation: none;
+    animation-play-state: paused;
+    transition: none;
+    will-change: auto;
+    transform: none;
+    cursor: default;
+  }
+
+  &.answered .buttons .draggable,
+  &.answered .dropzone .draggable,
+  &.answered .dropzone .hint {
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
+  }
+
+  & .dropzones .replay-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: auto;
+    display: inline-block;
+    padding: 0.5em 0.6em;
+    background: rgb(var(--blue-drinkit-RGB));
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 2em;
+    border-radius: 5em;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  & .replay-btn:hover {
+    background: rgb(var(--blue-drinkit-RGB));
+    filter: brightness(1.3);
+    transition: color 0s ease;
+  }
+
+  @media (width < 768px) {
+    & .dropzones {
+      height: 100%;
+    }
+
+    & .draggable {
+      font-size: 0.8em;
+    }
+
+    & .quiz {
+      margin-bottom: 0;
+    }
+
+    & .buttons {
+      flex-direction: row;
+      flex-wrap: wrap;
+      position: unset;
+      margin-bottom: calc(var(--ids__density, 1.3) * 0.6em);
+      width: auto;
+    }
+
+    & button.draggable,
+    & button.replay-btn {
+      user-select: none;
+    }
+
+    & .buttons {
+      align-items: flex-start;
+    }
+
+    & .buttons .draggable {
+      align-self: flex-start;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+    }
+
+    & .replay-btn {
+      font-size: 0.8em;
+    }
+
+    & .dropzones .replay-btn {
+      font-size: 1.3em;
+    }
+
+    & .mixin--no-yes--arrow---curve-R {
+      display: none;
+    }
+  }
+}
+
+@keyframes quiz-game-shake {
+  from {
+    transform: translate3d(var(--tx), var(--ty), 0)
+      rotate(calc(var(--base-angle) - 1deg));
+  }
+  to {
+    transform: translate3d(var(--tx), var(--ty), 0)
+      rotate(calc(var(--base-angle) + 1deg));
+  }
+}
