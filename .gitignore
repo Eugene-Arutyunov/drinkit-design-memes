@@ -6,3 +6,8 @@ node_modules/
 
 .DS_Store
 **/.DS_Store
+
+# Interview: local only, not deployed
+src/kto-delaet-interiery-drinkit.html
+src/assets/interview-3/
+src/assets/home/nikita-tugarin.jpg

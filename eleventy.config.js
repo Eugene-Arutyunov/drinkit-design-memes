@@ -1,4 +1,8 @@
 module.exports = function (conf) {
+  // Local-only files stay in .gitignore (so they are not deployed),
+  // but Eleventy still builds them on localhost.
+  conf.setUseGitIgnore(false);
+
   conf.addPassthroughCopy("./src/ids");
   conf.addPassthroughCopy("./src/index.js");
   conf.addPassthroughCopy("./src/assets");
